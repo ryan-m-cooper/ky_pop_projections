@@ -1,0 +1,32 @@
+﻿body {
+  padding: 0; margin: 0;
+  background: #121212;
+}
+h1, form {
+  position: absolute;
+  left: 20px; top: 10px;
+  font-family: Arial, sans-serif;
+  font-size: 2em;
+  color: whitesmoke;
+}
+form {
+  top: 80px;
+  font-size: 1.1em;
+}
+.key path {
+  display: none;
+}
+
+.key line {
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+label{
+  margin: 0 10px 0 4px;
+}
+.county {
+  stroke: black;
+}
+.hover {
+  fill: yellow;
+}
