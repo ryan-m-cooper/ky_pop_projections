@@ -1,11 +1,11 @@
 // var data = "http://services1.arcgis.com/dpmGqj7FxlwlvK0y/ArcGIS/rest/services/ky_pop_ksdc_simplify/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=county%2C+ky10_15%2C+ky15_20%2C+ky20_25%2C+ky25_30%2C+ky30_35%2C+ky35_40&returnGeometry=true&returnCentroid=false&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnDistinctValues=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&quantizationParameters=&sqlFormat=none&f=pgeojson&token="
 
 var data = "ky_pop_ksdc_simplify.topojson",
-  width = $("#main").width(),
-  height = $("#main").height(),
+  width = window.innerWidth,
+  height = window.innerHeight,
   colorScheme = ["#f44336","#ef9a9a","#F5F5F5","#90CAF9","#2196F3"];
 
-var svg = d3.select("#main")
+var svg = d3.select("body")
   .append("svg")
   .attr("width", width)
   .attr("height", height);
@@ -47,7 +47,7 @@ legend.append("text")
   .text(function(d) {return d;})
   .attr("x", 28)
   .attr("y", 14)
-  .attr("fill", "#121212");
+  .attr("fill", "#ffffff");
 
 var projection = d3.geo.albers()
   .center([0 ,37.8])
@@ -77,29 +77,13 @@ function ready(error, counties){
       return colorScale(d.properties[attribute]);
     })
     .on("mouseover", function(d){
-      // d3.select("h2").text(d.properties.county);
-      var p = d.properties;
+      d3.select("h2").text(d.properties.county);
       d3.select(this).attr("class", "county hover");
-      d3.select("#info-county").text(p.county);
-      d3.selectAll("input");
-      yearData = this.id;
-      d3.select("#p10_15").text(p.ky10_15);
-      d3.select("#d10_15").text(p.n2015-p.c2010);
-      d3.select("#p15_20").text(p.ky15_20);
-      d3.select("#d15_20").text(p.n2020-p.n2015);
-      d3.select("#p20_25").text(p.ky20_25);
-      d3.select("#d20_25").text(p.n2025-p.n2020);
-      d3.select("#p25_30").text(p.ky25_30);
-      d3.select("#d25_30").text(p.n2030-p.n2025);
-      d3.select("#p30_35").text(p.ky30_35);
-      d3.select("#d30_35").text(p.n2035-p.n2030);
-      d3.select("#p35_40").text(p.ky35_40);
-      d3.select("#d35_40").text(p.n2040-p.n2035);
+      d3.select("#info-county").text(d.properties.county);
     })
     .on("mouseout", function(d){
       d3.select("h2").text("");
       d3.select(this).attr("class", "county");
-      d3.selectAll(".data-value").remove();
     });
 
 mapColor();
