@@ -5,10 +5,7 @@ var data = "ky_pop_ksdc_simplify.topojson",
   height = $("#main").height(),
   colorScheme = ["#f44336","#ef9a9a","#F5F5F5","#90CAF9","#2196F3"];
 
-var svg = d3.select("#main")
-  .append("svg")
-  .attr("width", width)
-  .attr("height", height);
+
 
 // For Map
 var colorScale = d3.scale.threshold()
@@ -49,6 +46,12 @@ legend.append("text")
   .attr("y", 14)
   .attr("fill", "#121212");
 
+
+var svg = d3.select("#main")
+  .append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("class", "map")
 var projection = d3.geo.albers()
   .center([0 ,37.8])
   .rotate([85.8, 0])
@@ -57,6 +60,7 @@ var projection = d3.geo.albers()
 
 var geoPath = d3.geo.path()
   .projection(projection);
+
 
 queue()
   .defer(d3.json, data)

@@ -15,6 +15,11 @@
   overflow-y: scroll;
 }
 
+.overlay {
+  fill: none;
+  point-events: all;
+}
+
 .county {
   stroke: black;
 }
