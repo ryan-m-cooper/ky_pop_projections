@@ -13,7 +13,7 @@ var colorScale = d3.scale.threshold()
   .range(colorScheme)
 // For Legend
 var color = d3.scale.ordinal()
-  .domain(["< -5", "-5 - -1", "-1 - 1", "1 - 5", "> 5"])
+  .domain(["< -5%", "-5% - -1%", "-1% - 1%", "1% - 5%", "> 5%"])
   .range(colorScheme);
 
 var legendRectSize = 18,
@@ -34,7 +34,7 @@ var legend  = d3.select("#legend-container")
       return "translate(" + x + "," + y +")";
     });
 legend.append("rect")
-  .attr("width", legendRectSize)
+  .attr("width", legendRectSize*4)
   .attr("height", legendRectSize)
   .style("fill", color)
   .style("stroke", color);
@@ -42,7 +42,7 @@ legend.append("text")
   .attr("x", legendRectSize + legendSpacing)
   .attr("y", legendRectSize + legendSpacing)
   .text(function(d) {return d;})
-  .attr("x", 28)
+  .attr("x", 84)
   .attr("y", 14)
   .attr("fill", "#121212");
 
@@ -68,6 +68,12 @@ queue()
 
 function ready(error, counties){
 
+  d3.selection.prototype.moveToFront = function() {
+    return this.each(function(){
+    this.parentNode.appendChild(this);
+    });
+  };
+
   var attribute = "ky10_15";
 
   var counties = svg.append("g")
@@ -83,7 +89,9 @@ function ready(error, counties){
     .on("mouseover", function(d){
       // d3.select("h2").text(d.properties.county);
       var p = d.properties;
-      d3.select(this).attr("class", "county hover");
+      d3.select(this)
+        .attr("class", "county hover")
+        .moveToFront();
       d3.select("#info-county").text(p.county);
       d3.selectAll("input");
       yearData = this.id;

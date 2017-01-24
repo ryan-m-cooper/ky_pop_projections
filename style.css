@@ -22,7 +22,10 @@
 
 .county {
   stroke: black;
+  stroke-linejoin: round;
 }
 .hover {
-  fill: yellow;
+  /*fill: yellow;*/
+  stroke: #121212;
+  stroke-width: 4px;
 }
