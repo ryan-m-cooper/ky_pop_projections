@@ -19,7 +19,7 @@
     </div>
 </div>
 <div id="wrapper" class="">
-    <div id="sidebar-wrapper" class="col-md-2">
+    <div id="sidebar-wrapper" class="col-md-3">
         <div id="period-select" class="" style="">
           <h3>Select a Time Period: </h3>
           <input type="radio" name="county" id="ky10_15" checked="true"><label for="ky10_15">2010 - 2015</label><br>
@@ -34,6 +34,7 @@
         </div>
         <div id="info-container">
           <h3>County: <span id="info-county"></span></h3>
+          <div class="spark-container"></div>
             <table class="table table-striped">
               <thead>
                 <th>Period</th>
@@ -73,9 +74,10 @@
                 </tr>
               </tbody>
             </table>
+            <p><a href="http://www.ksdc.louisville.edu/data-downloads/projections/" target="_blank">Source: Kentucky State Data Center</a></p>
         </div>
     </div>
-    <div id="main-wrapper" class="col-md-10 pull-right">
+    <div id="main-wrapper" class="col-md-9 pull-right">
         <div id="main" class="">
         </div>
     </div>
@@ -83,6 +85,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.4/numeral.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <script src="./app.js"></script>
   </body>

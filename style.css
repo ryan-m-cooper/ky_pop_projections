@@ -19,13 +19,32 @@
   fill: none;
   point-events: all;
 }
+#main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .county {
   stroke: black;
   stroke-linejoin: round;
 }
-.hover {
+.hover, .clicked {
   /*fill: yellow;*/
   stroke: #121212;
   stroke-width: 4px;
+}
+.spark-svg {
+  width: 210;
+  height: 85;
+  padding: 5;
+}
+.spark {
+  stroke: black;
+  fill: none;
+  stroke-width: 2px;
+}
+
+table, th {
+  text-align: center;
 }
